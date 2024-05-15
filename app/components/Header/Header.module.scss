@@ -1,0 +1,38 @@
+.root {
+background: var(--mainBG);
+  z-index: 10;
+  width: calc(100% - 220px);
+  max-width: 1200px;
+  position: fixed;
+  top: 0;
+  left: 50%; 
+  transform: translateX(-50%); 
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s ease-in-out;
+  @media (max-width: 850px) {
+    width: calc(100% - 100px);
+  }
+  @media (max-width: 850px) {
+    width: calc(100% - 50px);
+  }
+  @media (max-width: 560px) {
+    width: calc(100% - 10px);
+  }
+  @media (max-width: 420px) {
+    padding: 10px;
+    }
+  img{
+    width: 80px;
+    @media (max-width:450px) {
+    width: 60px;
+      
+    }
+    @media (max-width: 420px) {
+    width: 30px;
+     
+    }
+  }
+}

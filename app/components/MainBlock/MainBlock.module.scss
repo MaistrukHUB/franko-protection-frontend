@@ -1,0 +1,74 @@
+.root{
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  height: 700px;
+  max-height: 450px;
+  position: relative; /* Додайте це для правильного позиціонування елементів */
+  overflow: hidden; /* Приховати все, що виходить за межі батьківського елемента */
+  .infoBlock{
+    margin-top: 50px;
+    width: 300px;
+    .title{
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .subtitle{
+      margin-bottom: 20px;
+    }
+  }
+  .imgBlock{
+    position: absolute;
+    right: -120px;
+    top: 40px;
+    width: 520px; 
+    height: 520px; 
+    background-color: var(--circleBG); 
+    border-radius: 50%; 
+    img {
+      position: absolute;
+      top: -90px;
+      right: 60px;
+      width: 580px;
+      transform: rotateY(180deg) rotate(20deg);
+}
+
+    
+  }
+
+  .bottomGeometry{
+    
+    .geometryOne{
+      position: absolute;
+      bottom:  -175px;
+      right: 454px;
+      border-radius: 80px;
+      width: 700px;
+      height: 300px;
+      background-color: var(--carouselSaleBG);
+      transform:  rotate(3deg);
+    }
+
+   
+        svg {
+          fill: var(--carouselSaleBG);
+          position: absolute;
+          width: 700px;
+          bottom:  -5px;
+          right: -230px;
+        }
+      
+    
+    .geometryThree{
+      position: absolute;
+      bottom:  -213px;
+      right:  -513px;
+      border-radius: 80px;
+      width: 700px;
+      height: 300px;
+      background-color: var(--carouselSaleBG);
+      transform:  rotate(-1deg);
+    }
+  }
+
+}

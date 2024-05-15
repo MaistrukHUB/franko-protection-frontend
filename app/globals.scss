@@ -1,0 +1,113 @@
+
+:root {
+  --font-family: "Neometric", sans-serif;
+  --second-family: "Monument Extended", sans-serif;
+  --mainBG: #CCCCCC;
+  --background: linear-gradient(153deg, );
+  --max-width: 1440px;
+  --linear: #653C34;
+  --black: #000;
+  --white:#ffffff;
+  --gray-button: #363636;
+  --grayLight: #d5d2d2;
+  --grayLight-text: #adadad;
+  --grayDark-text: #525252;
+  --grayNav-primary: #717171;
+  --circleBG:#323232;
+  --carouselSaleBG:#1e1d1d;
+  // --grayNav-primary: #000;
+
+  --main-font-size: 18px;
+  --input-font-size: 14px;
+  --h1:72px;
+  --h2:64px;
+  --h3:24px;
+
+  --linear-button:#653C34;
+  --linear-button-active:#4A2D27;
+  --button-text-size-lg:14px;
+  --button-text-size-md:12px;
+  --button-text-size-sm:10px;
+
+
+  // --foreground-rgb: 0, 0, 0;
+  // --background-start-rgb: 214, 219, 220;
+  // --background-end-rgb: 255, 255, 255;
+}
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  font-family: 'Montserrat', sans-serif;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: var(--black);
+}
+
+body{
+background: var(--mainBG);
+}
+
+.wrapper{
+  max-width: var(--max-width);
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  justify-content: center;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  // background-color: red;
+  transition: 0.3s ease-in-out;
+  margin-top: 180px;
+  @media (max-width: 550px) {
+    // margin-top: 112px;
+  }
+  @media (max-width:450px) {
+        margin-top: 140px;
+
+      
+    }
+    @media (max-width: 420px) {
+      margin-top: 110px;
+      }
+}
+
+.content {
+  max-width: calc(100% - 220px); // Відступ від країв екрана
+  width: 100%;
+  padding: 0 110px;
+  // background: green;
+  @media (max-width: 1200px) {
+    padding: 0 50px;
+    max-width: calc(100% - 100px);
+  }
+  @media (max-width: 850px) {
+      padding: 0 20px;
+      max-width: calc(100% - 50px);
+  }
+  @media (max-width: 560px) {
+    width: calc(100% - 10px);
+  }
+}
+
+
+
+
+
+
+

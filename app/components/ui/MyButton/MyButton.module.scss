@@ -1,0 +1,56 @@
+.button {
+  max-width: max-content;
+  border: none;
+   font: inherit;
+   background:var(--grayLight);
+   cursor: pointer;
+   border-radius: 30px;
+   font-weight: 500;
+   transition: all 0.3s ease 0s;
+ 
+   &:hover{
+     background: var(--grayLight-text);
+   }
+ 
+   &_primary {
+     background: var(--linear-button);
+     color: var(--white);
+     font-weight: 600;
+ 
+     &:hover {
+       background: var(--linear-button-active);
+     }
+ 
+   
+   }
+ 
+   &:disabled,
+     &:focus:disabled,
+     &:hover:disabled,
+     &:active:disabled {
+       background: var(grayDark-text);
+       cursor: not-allowed;
+     }
+   &_lg {
+     font-weight: 700;
+     border-radius: 35px;
+     padding: 15px 25px;
+     font-size: var(--button-text-size-lg);
+     @media (max-width: 550px) {
+      padding: 10px 15px;
+      }
+   }
+ 
+   &_md {
+     border-radius: 21px;
+     padding: 5px 10px;
+     font-size: var(--button-text-size-md);
+   }
+ 
+   &_sm {
+     border-radius: 15px;
+     padding: 5px ;
+     font-size: var(--button-text-size-sm);
+   }
+ }
+ 
