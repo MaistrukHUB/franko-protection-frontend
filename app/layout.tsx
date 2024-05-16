@@ -4,6 +4,7 @@ import "./globals.scss";
 import Link from "next/link";
 import StoreProvider from "./StoreProvider";
 import { Header } from "./components";
+import Footer from "./components/Footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,6 +27,7 @@ export default function RootLayout({
             <div className='container'>
               <div className='content'>{children}</div>
             </div>
+            <Footer />
           </div>
         </StoreProvider>
       </body>

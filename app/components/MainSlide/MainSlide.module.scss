@@ -1,0 +1,50 @@
+.root{
+  position: relative;
+  min-width: 100%;
+  min-height: 100%;
+  .iconInfo{
+    position: absolute;
+    right: 50px;
+    top: 20px;
+    svg{
+    fill: var(--white);
+
+    }
+  }
+  .circle{ 
+    z-index: -1;
+    position: absolute;
+    left: calc(50% - 100px) ;
+    top: calc(50% - 100px) ;
+    height: 200px;
+    width:  200px;
+    background: black;
+    border-radius: 50%;
+  }
+  .contentSlide{
+    z-index: 2;
+    position: relative;
+    img{
+      position: absolute;
+      top: -10px;
+      left: 40px;
+      height: 200px;
+      width: 200px;
+    }
+    .nameDetail{
+      font-size: 20px;
+      font-weight: 200;
+      position: absolute;
+      top: 180px;
+      left: 100px;
+      color: var(--white);
+    }
+    .saleValue{
+      font-weight: 700;
+      position: absolute;
+      top: 205px;
+      left: 160px;
+      color: var(--white);
+    }
+  }
+}

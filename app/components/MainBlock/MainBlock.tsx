@@ -3,6 +3,7 @@ import React from "react";
 import styles from "./MainBlock.module.scss";
 import MyButton from "../ui/MyButton/MyButton";
 import { useRouter } from "next/navigation";
+import moto from "../../../assets/img/53362290680631.png";
 
 const MainBlock = () => {
   const router = useRouter();
@@ -27,6 +28,7 @@ const MainBlock = () => {
       <div className={styles.imgBlock}>
         <img
           src='https://kovi.dp.ua/content/images/1/400x309l85nn0/53362290680631.png'
+          // src={moto}
           alt=''
         />
       </div>

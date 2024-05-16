@@ -4,3 +4,4 @@ export { default as MyButton } from "./ui/MyButton/MyButton";
 export { default as MyInput } from "./ui/MyInput/MyInput";
 export { default as MainBlock } from "./MainBlock/MainBlock";
 export { default as CarouselSale } from "./CarouselSale/CarouselSale";
+export { default as MainSlide } from "./MainSlide/MainSlide";
