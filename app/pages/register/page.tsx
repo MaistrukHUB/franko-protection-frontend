@@ -1,8 +1,8 @@
 "use client";
 import styles from "./Register.module.scss";
 import React, { useState } from "react";
-import MyInput from "../components/ui/MyInput/MyInput";
-import MyButton from "../components/ui/MyButton/MyButton";
+import MyInput from "../../components/ui/MyInput/MyInput";
+import MyButton from "../../components/ui/MyButton/MyButton";
 import { useRouter } from "next/navigation";
 
 const Register = () => {

@@ -2,10 +2,10 @@
 import { useAppStore } from "@/lib/hooks/hooks";
 import styles from "./Login.module.scss";
 import React, { useState } from "react";
-import MyInput from "../components/ui/MyInput/MyInput";
-import MyButton from "../components/ui/MyButton/MyButton";
+import MyInput from "../../components/ui/MyInput/MyInput";
+import MyButton from "../../components/ui/MyButton/MyButton";
 import { useRouter } from "next/navigation";
-import * as Api from "../../api";
+import * as Api from "../../../api";
 import { parseCookies, setCookie } from "nookies";
 
 const Login = () => {

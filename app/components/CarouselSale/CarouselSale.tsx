@@ -7,7 +7,6 @@ const CarouselSale = () => {
     <div className={styles.root}>
       <div className={styles.infoBlock}>
         <h2 className={styles.subtitle}>Aкційні пропозиції</h2>
-        {/* <p className={styles.title}>Продукти</p> */}
       </div>
       <MainSwiper />
     </div>

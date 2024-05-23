@@ -18,7 +18,8 @@
     top: calc(50% - 100px) ;
     height: 200px;
     width:  200px;
-    background: black;
+    background: rgba(0, 0, 0, 0.443);
+    filter: blur(4px);
     border-radius: 50%;
   }
   .contentSlide{
