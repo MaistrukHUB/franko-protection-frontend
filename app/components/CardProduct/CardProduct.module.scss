@@ -1,0 +1,247 @@
+// .root{
+//   position: relative;
+//   min-width: 100%;
+//   min-height: 100%;
+//   max-width: 320px;
+//   max-height: 340px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: end;
+//   .infoText{
+//     color: var(--white);
+//     p,span{
+      
+//       color: var(--white);
+//       text-align: right;
+//       margin-bottom: 3px;
+//     }
+//     p{
+//       font-weight: 200;
+//     }
+//     span{
+//       font-weight: 500;
+//     }
+//   }
+//   .iconInfo{
+//     position: relative;
+//     left: 280px;
+//     top: -250px;
+//     svg{
+//     fill: var(--white);
+//     }
+//     .moreInfoText{
+//       color: var(--white);
+
+//       display: flex;
+//       flex-direction: column;
+//     }
+//     .modalMoreInfo{
+//       z-index: 5;
+//       color: var(--white);
+//       border-radius: 3px;
+//       max-width: 255px;
+//       width: 100%;
+//       position: absolute;
+//       left:  -230px;
+//       padding: 5px 10px;
+//       background: rgba(97, 97, 97, 0.846);
+//     }
+//     .listMotos{
+//       color: var(--white);
+//       margin-top:5px;
+//       display: flex;
+//       li{
+//       color: var(--white);
+        
+//         margin-left: 5px;
+//       }
+//     }
+//     .listYers{
+//       margin-top:5px;
+//       color: var(--white);
+
+//       display: flex;
+//       li{
+//       color: var(--white);
+
+//         margin-left: 5px;
+//       }
+//     }
+//   }
+//   .circle{ 
+//     z-index: -1;
+//     position: absolute;
+//     left: calc(50% - 100px) ;
+//     top: calc(50% - 100px) ;
+//     height: 200px;
+//     width:  200px;
+//     background: rgba(0, 0, 0, 0.443);
+//     filter: blur(4px);
+//     border-radius: 50%;
+//   }
+//   .contentSlide{
+//     max-width: 320px;
+//     max-height: 340px;
+//     z-index: 2;
+//     position: relative;
+//     img{
+//       position: absolute;
+//       top: -310px;
+//       left: 35px;
+//       height: 200px;
+//       width: 200px;
+//     }
+//     .nameDetail{
+//       font-size: 20px;
+//       font-weight: 200;
+//       position: absolute;
+//       top: 180px;
+//       left: 100px;
+//       color: var(--white);
+//     }
+//     .saleValue{
+//       font-weight: 700;
+//       position: absolute;
+//       top: 205px;
+//       left: 160px;
+//       color: var(--white);
+//     }
+//   }
+// }
+
+
+
+
+
+
+
+
+
+.root{
+  margin: 0 auto;
+  padding: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(48, 47, 47);
+  border-radius: 10px;
+  max-width: 240px;
+  max-height: 350px;
+  width: 100vw;
+  height: 100vh;
+  h3{
+    color: var(--white);
+    font-weight: 400;
+    font-size: 24px;
+  }
+  .infoItem{
+    margin-left: 3px;
+    font-weight: 700;
+  }
+  p, span ,svg{
+    margin-bottom: 5px;
+    color: var(--white);
+    fill: var(--white);
+    text-shadow: 1px 1px 2px var(--black);
+  }
+  .iconInfo{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    svg{
+      cursor: pointer;
+    }
+    .moreInfoText{
+      color: var(--white);
+
+      display: flex;
+      
+      flex-direction: column;
+    }
+    .modalMoreInfo{
+      color: var(--white);
+      border-radius: 3px;
+      max-width: 240px;
+      width: 100%;
+      width: calc(100vw - 20px);
+      position: absolute;
+      left:  -205px;
+      top: 25px;
+      padding: 5px 10px;
+      background: rgba(97, 97, 97, 0.846);
+    }
+    .listMotos{
+     display: flex;
+     flex-wrap: wrap;
+     li{
+    font-weight: 700;
+
+      margin: 0;
+      margin-left: 5px;
+    }
+    }
+    .listYers {
+      font-weight: 200;
+      display: flex;
+      justify-content: flex-start; /* 'start' is not valid, should be 'flex-start' */
+      flex-wrap: wrap;
+  }
+  
+  .listYers li {
+    font-weight: 700;
+
+    margin: 0;
+      margin-left: 5px;
+  }
+  }
+  .infoText  p{
+    font-weight: 200;
+  }
+
+  .infoText {
+    width: 100%;
+  
+    color: var(--white);
+    p,span{
+      
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+   
+    span{
+      font-weight: 500;
+    }
+  }
+  .contentSlide{    
+    margin: 0 auto;
+  }
+  img{
+          
+          height: 200px;
+          width: 200px;
+        }
+        .cost{
+          font-size: 20px;
+        }
+
+        .nameDetail{
+          width: 100%;
+          text-align: center;
+          margin-bottom: 10px;
+        }
+
+        .bottomBlock{
+          width: 100%;
+          padding: 0px 10px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .finalCost {
+          font-size: 22px;
+          font-weight: 700;
+        }
+}

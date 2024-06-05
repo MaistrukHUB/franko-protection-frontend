@@ -5,6 +5,7 @@ import MyButton from "../ui/MyButton/MyButton";
 import { useRouter } from "next/navigation";
 import moto from "../../../assets/img/53362290680631.png";
 
+
 const MainBlock = () => {
   const router = useRouter();
 

@@ -9,9 +9,11 @@ background: var(--mainBG);
   transform: translateX(-50%); 
   padding: 10px;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   transition: 0.3s ease-in-out;
+  border-bottom: 1px solid black;
   @media (max-width: 850px) {
     width: calc(100% - 100px);
   }
@@ -24,15 +26,57 @@ background: var(--mainBG);
   @media (max-width: 420px) {
     padding: 10px;
     }
+    .top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      @media (max-width: 580px) {
+        justify-content: center;
+      }
+    }
+    
   img{
     width: 80px;
-    @media (max-width:450px) {
-    width: 60px;
-      
-    }
-    @media (max-width: 420px) {
-    width: 30px;
-     
+    @media (max-width: 580px) {
+      margin-right: 50px;
     }
   }
+
+  /* Default state: show NavHeader 1, hide NavHeader 2 */
+.navHeader1 {
+  width: 100%;
+  display: flex;
+}
+
+.navHeader2 {
+  width: 100%;
+
+
+  display: none;
+}
+
+/* Media query for screens 580px and below */
+@media (max-width: 960px) {
+  .navHeader1 {
+    display: none;
+  }
+
+  .navHeader2 {
+margin: 15px 0;
+    display: flex;
+  }
+}
+.userLogout{
+  display: flex;
+  align-items: center;
+  h2{
+    margin-left: 10px;
+    font-weight: 200;
+    border-bottom: 1px solid var(--black);
+  }
+  button{
+    margin-left: 10px;
+  }
+}
 }

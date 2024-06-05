@@ -1,0 +1,81 @@
+/* ConfirmModal.module.scss */
+
+.confirmModal {
+  color: var(--white);
+  position: fixed;
+  z-index: 10000000000000000;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: green;
+  width: 500px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px black;
+  border-radius: 15px;
+
+  @media (max-width: 1000px) {
+    width: 700px;
+  }
+  @media (max-width: 770px) {
+    width: 550px;
+  }
+  @media (max-width: 635px) {
+    width: 500px;
+  }
+  @media (max-width: 565px) {
+    width: 400px;
+  }
+  @media (max-width: 450px) {
+    width: 360px;
+  }
+}
+
+.icon {
+  fill: var(--white);
+  margin-bottom: 20px;
+}
+
+.buttons {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+
+  button {
+    margin-right: 30px;
+    border: solid 2px gold;
+  }
+
+  .deny {
+    background: none;
+  }
+
+  .confirm {
+    background: gold;
+  }
+
+  :last-child {
+    margin-right: 0;
+  }
+
+  @media (max-width: 635px) {
+    height: 100px;
+    width: 200px;
+    flex-direction: column;
+  }
+}
+
+.title {
+  font-weight: 500;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin-bottom: 50px;
+
+  @media (max-width: 635px) {
+    margin-bottom: 30px;
+  }
+}

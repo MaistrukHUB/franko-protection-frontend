@@ -1,14 +1,25 @@
 .root {
-  width: calc(320px * 3 + 30px * 2); /* Ширина всіх слайдів + проміжки між ними */
+  margin: 0 auto;
+  width: calc(280px * 3 ); /* Ширина всіх слайдів + проміжки між ними */
   overflow: hidden; /* Обмеження вмісту контейнера, якщо слайдер виходить за межі */
+  @media (max-width: 1450px) {
+    margin: 0 auto;
 
+    width: calc(280px * 2 ); 
+  }
+  @media (max-width: 770px) {
+    width: calc(280px * 1 ); 
+  }
   .mySwiper {
     width: 100%; /* Щоб контейнер займав весь вміст */
   }
 
   .slide {
-    width: 320px;
-    height: 260px;
+    width: 280px;
+    height: 360px;
+    @media (max-width: 1450px) {
+      margin: 0 auto;
+    }
   }
 
  

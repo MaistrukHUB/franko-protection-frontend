@@ -36,14 +36,15 @@
      border-radius: 35px;
      padding: 15px 25px;
      font-size: var(--button-text-size-lg);
-     @media (max-width: 550px) {
-      padding: 10px 15px;
-      }
+    
    }
  
    &_md {
+    
+     font-size: 20px;
+    font-weight: 500;
      border-radius: 21px;
-     padding: 5px 10px;
+     padding: 10px 15px;
      font-size: var(--button-text-size-md);
    }
  

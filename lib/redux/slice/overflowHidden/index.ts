@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../index";
+import { RootState } from "../../store";
 
 export type VisibleType = {
   visible: boolean;
