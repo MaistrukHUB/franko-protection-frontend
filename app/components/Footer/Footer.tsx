@@ -9,9 +9,6 @@ import styles from "./Footer.module.scss";
 import MyButton from "../ui/MyButton/MyButton";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
 import * as yup from "yup";
-import { ToastContainer, toast } from "react-toastify";
-import { configToast } from "../../../lib/toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 import {
   IFormDataByOrder,
@@ -46,7 +43,6 @@ const Footer = () => {
   const [validationErrors, setValidationErrors] =
     useState<FormErrorsQuestion>({});
 
-  // Assuming FormErrorsQuestion is defined in createOrderForm.ts
 
   useEffect(() => {
     if (isLogged) {
@@ -119,7 +115,6 @@ const Footer = () => {
         await handleValidation();
       if (Object.keys(handleValidationErrors).length === 0) {
         handelSandQuestion(question, formData);
-        toast.success("Виконано!", { ...configToast });
         setQuestion("");
       }
     } catch (error: any) {
@@ -128,10 +123,8 @@ const Footer = () => {
         error.response.data &&
         error.response.data.message
       ) {
-        toast.info("Вітаємо!", { ...configToast });
         setServerError([error.response.data.message]);
       } else {
-        toast.info("Вітаємо!", { ...configToast });
         setServerError(["Сталася невідома помилка."]);
       }
     }
@@ -216,7 +209,6 @@ const Footer = () => {
           </MyButton>
         </div>
       </div>
-      <ToastContainer />
     </div>
   );
 };

@@ -1,10 +1,7 @@
 // ConfirmModal.tsx
 
 import React from "react";
-import { ToastOptions, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import style from "./ConfirmModal.module.scss";
-import { configToast } from "../../../lib/toastify";
 
 export interface IConfirmModalProps {
   confirmButtonText: string;
@@ -29,8 +26,6 @@ const ConfirmModal: React.FC<IConfirmModalProps> = ({
     setShowConfirm(false);
     onConfirm(event);
 
-    const toastOptions: ToastOptions = { ...configToast };
-    toast.success("Виконано!", toastOptions);
   };
 
   const handleDeny: React.MouseEventHandler<HTMLButtonElement> = (
@@ -38,8 +33,6 @@ const ConfirmModal: React.FC<IConfirmModalProps> = ({
   ) => {
     setShowConfirm(false);
     onDeny(event);
-    const toastOptions: ToastOptions = { ...configToast };
-    toast.info("Скасовано!", toastOptions);
   };
 
   return (

@@ -1,15 +1,13 @@
 import {
   createSlice,
-  createAsyncThunk,
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
-import { Status } from "@/app/@types/status";
 import { IUserDTO } from "@/api/dto/auth.dto";
 
-const getUserFromSessionStorage = (): IUserDTO | null => {
+const getUserFromLocalStorage = (): IUserDTO | null => {
   if (typeof window !== "undefined") {
-    const userString = sessionStorage.getItem("user");
+    const userString = localStorage.getItem("user");
     return userString ? JSON.parse(userString) : null;
   }
   return null;
@@ -21,7 +19,7 @@ interface IDetailSliceState {
 }
 
 const initialState: IDetailSliceState = {
-  user: getUserFromSessionStorage() || {
+  user: {
     id: null,
     name: "",
     phone: null,
@@ -44,12 +42,19 @@ const userSlice = createSlice({
       state.isLogged = false;
       localStorage.removeItem("user");
     },
+    initializeUser(state) {
+      const userFromStorage = getUserFromLocalStorage();
+      if (userFromStorage) {
+        state.user = userFromStorage;
+        state.isLogged = true;
+      }
+    },
   },
 });
 
 export const selectUser = (state: RootState) => state.userSlice.user;
 
-export const { setLogin, setLogout } = userSlice.actions;
+export const { setLogin, setLogout, initializeUser } = userSlice.actions;
 
 // Експорт редуктору
 export default userSlice.reducer;

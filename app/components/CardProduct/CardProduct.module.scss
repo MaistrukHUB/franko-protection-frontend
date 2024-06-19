@@ -131,6 +131,21 @@
   max-height: 350px;
   width: 100vw;
   height: 100vh;
+  .deleteIcon{
+    cursor: pointer;
+    fill: var(--white);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+  
+  .settingIcon{
+    cursor: pointer;
+    fill: var(--white);
+    position: absolute;
+    left: 45px;
+    top: 11px;
+  }
   h3{
     color: var(--white);
     font-weight: 400;

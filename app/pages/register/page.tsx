@@ -9,9 +9,6 @@ import * as Api from "../../../api"; // Імпортуємо ваш API
 import { useAppDispatch } from "@/lib/hooks/hooks";
 import { setCookie } from "nookies";
 import { setLogin } from "@/lib/redux/slice/user";
-import { ToastContainer, toast } from "react-toastify";
-import { configToast } from "../../../lib/toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const dispatch = useAppDispatch();
@@ -112,13 +109,11 @@ const Register = () => {
 
       dispatch(setLogin(user));
 
-      toast.success("Вітаємо!", { ...configToast });
       setCookie(null, "_token", token, {
         path: "/",
       });
       router.push("/");
     } catch (error: any) {
-      toast.error("Помилка. Перевірте ваші дані та спробуйте знову."); // Використовуємо toast.error для виведення помилки
       // Обробка помилок валідації
       if (error instanceof yup.ValidationError) {
         const validationErrors: Record<string, string | null> = {};
@@ -147,8 +142,6 @@ const Register = () => {
   return (
     <form autoComplete='off' className={styles.root}>
       <div>
-        {/* <button onClick={notify}>Notify!</button> */}
-        <ToastContainer />
       </div>
       {serverError && (
         <p className={styles.serverError}>{serverError}</p>

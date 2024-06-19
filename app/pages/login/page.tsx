@@ -9,9 +9,6 @@ import * as Api from "../../../api";
 import { setCookie } from "nookies";
 import { setLogin } from "@/lib/redux/slice/user";
 import * as yup from "yup"; // Імпортуємо бібліотеку Yup
-import { ToastContainer, toast } from "react-toastify";
-import { configToast } from "../../../lib/toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 // Створюємо схему валідації за допомогою Yup
 const validationSchema = yup.object().shape({
@@ -83,7 +80,6 @@ const Login = () => {
 
       dispatch(setLogin(user));
 
-      toast.success("Вітаємо!", { ...configToast });
 
       setCookie(null, "_token", token, {
         path: "/",
@@ -91,19 +87,15 @@ const Login = () => {
       // router.push("/");
     } catch (error) {
       console.warn("LoginForm", error);
-      toast.error(
-        "Помилка авторизації. Перевірте ваші дані та спробуйте знову."
-      ); // Використовуємо toast.error для виведення помилки
+   
       setServerError(null); // Очистимо serverError, якщо це потрібно
     }
   };
 
-  const notify = () => toast("Wow so easy!");
   return (
     <form className={styles.root} autoComplete='off'>
       <div>
         {/* <button onClick={notify}>Notify!</button> */}
-        <ToastContainer />
       </div>
       {serverError && (
         <p className={styles.serverError}>{serverError}</p>

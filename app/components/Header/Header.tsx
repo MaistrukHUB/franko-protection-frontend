@@ -2,19 +2,31 @@
 import NavHeader from "../NavHeader/NavHeader";
 import MyButton from "../ui/MyButton/MyButton";
 import styles from "./Header.module.scss";
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { useAppSelector } from "@/lib/hooks/hooks";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
+import * as Api from "../../../api";
+import { initializeUser, setLogout } from "@/lib/redux/slice/user";
 
 const Header = () => {
+  const dispatch = useAppDispatch();
   const router = useRouter();
 
   const user = useAppSelector((state) => state.userSlice.user);
 
-  const handelLogout = () => {
+  const handelLogin = () => {
     router.push("/login");
   };
+  const handelLogout = async () => {
+    await Api.auth.logout();
+    dispatch(setLogout());
+    router.push("/");
+  };
+
+  useEffect(() => {
+    dispatch(initializeUser());
+  }, [dispatch]);
 
   return (
     <div className={styles.root}>
@@ -35,7 +47,7 @@ const Header = () => {
             <MyButton
               buttonColor='black'
               textColor='white'
-              onClick={() => router.push("/")}
+              onClick={() => handelLogout()}
               size={"md"}
             >
               Вийти
@@ -45,7 +57,7 @@ const Header = () => {
           <MyButton
             buttonColor='black'
             textColor='white'
-            onClick={() => handelLogout()}
+            onClick={() => handelLogin()}
             size={"lg"}
           >
             Увійти

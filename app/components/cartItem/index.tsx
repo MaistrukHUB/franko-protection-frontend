@@ -2,34 +2,27 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import style from "./CartItem.module.scss";
-import {
-  Theme,
-  toast,
-  ToastContainer,
-  ToastOptions,
-} from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import ConfirmModal from "../confirmModal";
+
 import { CartDetailType } from "@/app/@types/cart";
 import {
   addProduct,
   minusProduct,
   removeProduct,
 } from "@/lib/redux/slice/cart";
-import { configToast } from "../../../lib/toastify";
 import Link from "next/link";
+import { useAppDispatch } from "@/lib/hooks/hooks";
+import ConfirmModal from "../confirmModal";
 
 export interface ICartItemProps {
   detailCart: CartDetailType;
 }
 
 const CartItem: React.FC<ICartItemProps> = ({ detailCart }) => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
 
   const onClickPlus = (): void => {
     dispatch(addProduct(detailCart));
-    toast.success("Продукт додано!", { ...configToast });
   };
 
   const onClickMinus = (): void => {
@@ -37,7 +30,6 @@ const CartItem: React.FC<ICartItemProps> = ({ detailCart }) => {
       setShowConfirm(true);
     } else {
       dispatch(minusProduct(detailCart));
-      toast.info("Видалено!", { ...configToast });
     }
   };
 
@@ -47,7 +39,6 @@ const CartItem: React.FC<ICartItemProps> = ({ detailCart }) => {
 
   const onConfirmDeleteProduct = async (): Promise<void> => {
     dispatch(removeProduct(detailCart));
-    toast.info("Видалено!", { ...configToast });
   };
 
   const onDeny = (): void => {

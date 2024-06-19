@@ -13,9 +13,6 @@ import { CartDetailType } from "@/app/@types/cart";
 import MyButton from "../ui/MyButton/MyButton";
 import MyInput from "../ui/MyInput/MyInput";
 import styles from "./CreateOrder.module.scss";
-import { ToastContainer, toast } from "react-toastify";
-import { configToast } from "../../../lib/toastify";
-import "react-toastify/dist/ReactToastify.css";
 import ConfirmModal from "../confirmModal";
 import { createNewOrder } from "@/lib/telegram";
 
@@ -198,7 +195,6 @@ const CreateOrderForm: React.FC<ICreateOrderFormProps> = ({
       if (Object.keys(handleValidationErrors).length === 0) {
         detailsCart &&
           createNewOrder(detailsCart, formData, totalPrice);
-        toast.success("Виконано!", { ...configToast });
         dispatch(clearCart());
         closeModal(event);
       }
@@ -208,10 +204,8 @@ const CreateOrderForm: React.FC<ICreateOrderFormProps> = ({
         error.response.data &&
         error.response.data.message
       ) {
-        toast.info("Вітаємо!", { ...configToast });
         setServerError([error.response.data.message]);
       } else {
-        toast.info("Вітаємо!", { ...configToast });
         setServerError(["Сталася невідома помилка."]);
       }
     }
@@ -226,7 +220,6 @@ const CreateOrderForm: React.FC<ICreateOrderFormProps> = ({
         console.log(detailsCart, formData, totalPrice);
         detailsCart &&
           createNewOrder(detailsCart, formData, totalPrice);
-        toast.success("Виконано!", { ...configToast });
         dispatch(clearCart());
       }
     } catch (error: any) {
@@ -248,7 +241,6 @@ const CreateOrderForm: React.FC<ICreateOrderFormProps> = ({
 
   return (
     <div className={styles.root}>
-      <ToastContainer />
       {isLogged ? (
         <>
           {isModalOpen ? (
