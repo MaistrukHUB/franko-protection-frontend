@@ -59,7 +59,10 @@ const validationSchema = yup.object().shape({
     .array()
     .of(yup.string())
     .required("Colors are required"),
-  years: yup.array().of(yup.number()).required("Years are required"),
+  years: yup
+    .array()
+    .of(yup.number().positive("Year must be positive"))
+    .required("Years are required"),
   sale: yup.number().required("Sale is required").min(0).max(100),
   category: yup.string().required("Category is required"),
   motorcycles: yup
@@ -155,9 +158,11 @@ const DetailModal: React.FC<DetailModalProps> = ({
     >
   ) => {
     const { name, value } = e.target;
+    const newValue =
+      e.target.type === "number" ? parseFloat(value) : value;
     setFormData({
       ...formData,
-      [name]: value,
+      [name]: newValue,
     });
   };
 
@@ -165,11 +170,29 @@ const DetailModal: React.FC<DetailModalProps> = ({
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     field: string
   ) {
-    const value = e.target.value.split(", ");
-    setFormData((prevData) => ({
-      ...prevData,
-      [field]: value,
-    }));
+    const { value } = e.target;
+
+    if (field === "years") {
+      // Обробка для поля years - масив чисел
+      const newValue = value
+        .split(",")
+        .map((item) => item.trim())
+        .filter((item) => !isNaN(Number(item))) // фільтруємо тільки числа
+        .map((item) => Number(item)); // перетворюємо до числа
+
+      setFormData((prevData) => ({
+        ...prevData,
+        [field]: newValue,
+      }));
+    } else {
+      // Інші поля (colors, imgs, motorcycles) - масиви строк
+      const newValue = value.split(",").map((item) => item.trim());
+
+      setFormData((prevData) => ({
+        ...prevData,
+        [field]: newValue,
+      }));
+    }
   }
 
   const handleSubmit = async (e: FormEvent) => {
@@ -179,16 +202,15 @@ const DetailModal: React.FC<DetailModalProps> = ({
         abortEarly: false,
       });
 
-      let method = "POST"; // За замовчуванням POST
+      let method = "POST"; // Default to POST
 
-      const url = detail?.id
+      const url = detail
         ? `http://localhost:6969/detail/${detail.id}`
         : "http://localhost:6969/detail/create";
 
       if (detail) {
-        method = "PATCH"; // Якщо передано detail з id, використовуємо PATCH
+        method = "PATCH"; // If detail with id is provided, use PATCH
       }
-
       const { _token } = parseCookies();
 
       const requestOptions: RequestInit = {
@@ -203,7 +225,6 @@ const DetailModal: React.FC<DetailModalProps> = ({
       const response = await fetch(url, requestOptions);
 
       if (!response.ok) {
-        // Перевірка на помилку HTTP
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
@@ -219,7 +240,6 @@ const DetailModal: React.FC<DetailModalProps> = ({
     } catch (err: any) {
       const newErrors: Errors = {};
       if (err.response) {
-        // Server returned an error response
         console.error("Server error:", err.response.data);
       } else if (err.message) {
         console.error("Error message:", err.message);
@@ -282,7 +302,7 @@ const DetailModal: React.FC<DetailModalProps> = ({
           type='text'
           label='Матеріал: '
           onChange={handleChange}
-          value={`${formData.material}`}
+          value={formData.material}
         />
         {errors.material && (
           <p style={customStyles.warningText}>{errors.material}</p>
@@ -300,7 +320,7 @@ const DetailModal: React.FC<DetailModalProps> = ({
         <MyInput
           name='imgs'
           type='text'
-          label='Посилання на зображення (вказувати через кому) '
+          label='Зображення (вказувати через кому) '
           onChange={(e) =>
             handleArrayChange(
               e as ChangeEvent<HTMLInputElement>,
@@ -345,7 +365,7 @@ const DetailModal: React.FC<DetailModalProps> = ({
 
         <MyInput
           name='sale'
-          type='text'
+          type='number'
           label='Знижка %:'
           onChange={handleChange}
           value={`${formData.sale}`}
@@ -389,9 +409,15 @@ const DetailModal: React.FC<DetailModalProps> = ({
           <p style={customStyles.warningText}>{errors.motorcycles}</p>
         )}
         <div style={customStyles.buttons} className={styles.buttons}>
-          <MyButton primary={true} type='submit'>
-            Замовити
-          </MyButton>
+          {detail ? (
+            <MyButton primary={true} type='submit'>
+              Оновити
+            </MyButton>
+          ) : (
+            <MyButton primary={true} type='submit'>
+              Додати
+            </MyButton>
+          )}
           <MyButton textColor='black' onClick={onRequestClose}>
             Скасувати
           </MyButton>

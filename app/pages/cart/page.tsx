@@ -42,10 +42,10 @@ const Cart = () => {
             </div>
             <div className={styles.confirmOrder}>
               <div className={styles.totalPrice}>
-                Загальна сума: {totalCount}
+                Загальна сума: {totalPrice}
               </div>
               <div className={styles.totalCount}>
-                Занальна кількість: {totalPrice}
+                Занальна кількість: {totalCount}
               </div>
               <MyButton
                 onClick={handleCreateOrder}

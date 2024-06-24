@@ -26,6 +26,15 @@ background: var(--mainBG);
   @media (max-width: 420px) {
     padding: 10px;
     }
+    .headerLogo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--grayNav-primary);
+      white-space: nowrap;
+    }
     .top {
       display: flex;
       align-items: center;
@@ -39,7 +48,7 @@ background: var(--mainBG);
   img{
     width: 80px;
     @media (max-width: 580px) {
-      margin-right: 50px;
+      // margin-right: 50px;
     }
   }
 

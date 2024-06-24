@@ -130,7 +130,12 @@ const Register = () => {
           error.response.data &&
           error.response.data.message
         ) {
-          setServerError(error.response.data.message.join(", "));
+          const serverMessage = Array.isArray(
+            error.response.data.message
+          )
+            ? error.response.data.message.join(", ")
+            : error.response.data.message;
+          setServerError(serverMessage);
         } else {
           setServerError("Помилка реєстрації. Спробуйте знову.");
         }
@@ -141,8 +146,7 @@ const Register = () => {
 
   return (
     <form autoComplete='off' className={styles.root}>
-      <div>
-      </div>
+      <div></div>
       {serverError && (
         <p className={styles.serverError}>{serverError}</p>
       )}{" "}
@@ -150,7 +154,7 @@ const Register = () => {
       <MyInput
         onChange={handleChangeName}
         value={name}
-        label='Name'
+        label="Ім'я"
       />
       {errors && errors.name && (
         <p className={styles.error}>{errors.name}</p>
@@ -159,7 +163,7 @@ const Register = () => {
         type='number'
         onChange={handleChangePhone}
         value={phone === null ? "" : phone.toString()} // Перетворюємо число на рядок для введення
-        label='Phone'
+        label='Телефон'
       />
       {errors && errors.phone && (
         <p className={styles.error}>{errors.phone}</p>
@@ -175,7 +179,7 @@ const Register = () => {
       <MyInput
         onChange={handleChangePassword}
         value={password}
-        label='Password'
+        label='Пароль'
         type='password'
       />
       {errors && errors.password && (
@@ -184,7 +188,7 @@ const Register = () => {
       <MyInput
         onChange={handleChangesRepeatPassword}
         value={repeatPassword}
-        label='Repeat Password'
+        label='Повторіть пароль'
         type='password'
       />
       {errors && errors.repeatPassword && (

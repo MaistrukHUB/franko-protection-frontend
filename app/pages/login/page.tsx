@@ -80,23 +80,20 @@ const Login = () => {
 
       dispatch(setLogin(user));
 
-
       setCookie(null, "_token", token, {
         path: "/",
       });
-      // router.push("/");
+      router.push("/");
     } catch (error) {
       console.warn("LoginForm", error);
-   
+
       setServerError(null); // Очистимо serverError, якщо це потрібно
     }
   };
 
   return (
     <form className={styles.root} autoComplete='off'>
-      <div>
-        {/* <button onClick={notify}>Notify!</button> */}
-      </div>
+      <div>{/* <button onClick={notify}>Notify!</button> */}</div>
       {serverError && (
         <p className={styles.serverError}>{serverError}</p>
       )}{" "}
@@ -112,7 +109,7 @@ const Login = () => {
       <MyInput
         onChange={handleChangePassword}
         value={password}
-        label='Password'
+        label='Пароль'
         type='password'
       />
       {errors?.password && (

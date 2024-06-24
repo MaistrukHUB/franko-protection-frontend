@@ -10,10 +10,12 @@ import { addProduct } from "@/lib/redux/slice/cart";
 import ConfirmModal from "../confirmModal";
 import DetailModal from "../DetailModal/DetailModal";
 import { fetchDetails } from "@/lib/redux/slice/details";
+import { parseCookies } from "nookies";
+import Link from "next/link";
 
 interface ICardProductProps {
   detail: DetailDTO;
-  isAdmin: boolean;
+  isAdmin?: boolean;
 }
 
 const CardProduct: React.FC<ICardProductProps> = ({
@@ -23,8 +25,6 @@ const CardProduct: React.FC<ICardProductProps> = ({
   const [showMoreInfo, setShowMoreInfo] = useState<boolean>(false);
   const [showConfirm, setShowConfirm] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-
-
 
   const dispatch = useAppDispatch();
 
@@ -37,28 +37,35 @@ const CardProduct: React.FC<ICardProductProps> = ({
   };
 
   const onConfirm = async (): Promise<void> => {
+    console.log("confirm");
     try {
-       // Або отримайте id з параметрів маршруту або стану
-      const response = await fetch(`http://localhost:6969/api/products/${detail.id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-  
+      const { _token } = parseCookies();
+      // Або отримайте id з параметрів маршруту або стану
+      const response = await fetch(
+        `http://localhost:6969/detail/${detail.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${_token}`,
+          },
+        }
+      );
+
       if (!response.ok) {
-        throw new Error('Failed to delete the product');
+        throw new Error("Failed to delete the product");
       }
-  
-      console.log('Product deleted successfully');
+
+      console.log("Product deleted successfully");
       dispatch(fetchDetails());
     } catch (error) {
-      console.error('Error deleting product:', error);
+      console.error("Error deleting product:", error);
     } finally {
+      dispatch(fetchDetails());
+
       setShowConfirm(false);
     }
   };
-  
 
   const onDeny = (): void => {
     setShowConfirm(false);
@@ -149,18 +156,21 @@ const CardProduct: React.FC<ICardProductProps> = ({
         ""
       )}
       {isModalOpen ? (
-        <DetailModal isModalOpen={isModalOpen} detail={detail} onRequestClose={closeModal}/>
+        <DetailModal
+          isModalOpen={isModalOpen}
+          detail={detail}
+          onRequestClose={closeModal}
+        />
       ) : (
         ""
       )}
-      <div>
-      </div>
-      <div className={styles.contentSlide}>
-        <img
-          src='https://i.postimg.cc/3rCNyf9W/photo-2024-05-13-11-25-49-removebg-preview.png'
-          alt=''
-        />
-      </div>
+      <div></div>
+      <Link
+        href={`/detail?id=${detail.id}`}
+        className={styles.contentSlide}
+      >
+        <img src={detail.imgs[0]} alt='' />
+      </Link>
       <h3 className={styles.nameDetail}>{detail.name}</h3>
       <div className={styles.infoText}>
         <div className={styles.bottomBlock}>
@@ -174,14 +184,14 @@ const CardProduct: React.FC<ICardProductProps> = ({
                       detail.sale > 0 ? "line-through" : "",
                   }}
                 >
-                  {detail.cost}грн.
+                  {detail.cost} ₴
                 </span>
               </p>
             ) : (
               ""
             )}
 
-            <p className={styles.finalCost}>{detail.finalCost}грн</p>
+            <p className={styles.finalCost}>{detail.finalCost} ₴</p>
           </div>
           <MyButton
             onClick={() => handelAddProduct()}

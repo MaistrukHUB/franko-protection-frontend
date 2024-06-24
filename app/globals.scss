@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@0,100..900;1,100..900&display=swap');
 
 :root {
-  --mainBG: #ffffff;
+  --mainBG: #dfdcdc;
   --background: linear-gradient(153deg, );
   --max-width: 1440px;
   --linear: #653C34;
@@ -111,9 +111,9 @@ background: var(--mainBG);
 
       
     }
-    @media (max-width: 420px) {
-      margin-top: 110px;
-      }
+    // @media (max-width: 420px) {
+    //   margin-top: 110px;
+    //   }
 }
 
 .content {

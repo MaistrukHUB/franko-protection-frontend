@@ -13,18 +13,18 @@ const MainBlock = () => {
     <div className={styles.root}>
       <div className={styles.infoBlock}>
         <h1 className={styles.title}>
-          Виготовлення захисту для вашого моциклу
+          Виготовлення захисту для вашого мотоциклу
         </h1>
-        <p className={styles.subtitle}>
+        {/* <p className={styles.subtitle}>
           Якщо ви бажаєте виготовити деталь під замовлення
-        </p>
-        <MyButton
+        </p> */}
+        {/* <MyButton
           onClick={() => router.push("/register")}
           size='lg'
           buttonColor={"var(--linear-button)"}
         >
           Звязаться з нами
-        </MyButton>
+        </MyButton> */}
       </div>
       <div className={styles.imgBlock}>
         <img

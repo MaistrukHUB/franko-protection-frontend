@@ -2,6 +2,7 @@
 
 import React from "react";
 import style from "./ConfirmModal.module.scss";
+import MyButton from "../ui/MyButton/MyButton";
 
 export interface IConfirmModalProps {
   confirmButtonText: string;
@@ -25,7 +26,6 @@ const ConfirmModal: React.FC<IConfirmModalProps> = ({
   ) => {
     setShowConfirm(false);
     onConfirm(event);
-
   };
 
   const handleDeny: React.MouseEventHandler<HTMLButtonElement> = (
@@ -51,12 +51,12 @@ const ConfirmModal: React.FC<IConfirmModalProps> = ({
       </svg>
       <div className={style.title}>{message}</div>
       <div className={style.buttons}>
-        <button className={style.deny} onClick={handleDeny}>
-          {denyButtonText}
-        </button>
-        <button className={style.confirm} onClick={handleConfirm}>
-          {confirmButtonText}
-        </button>
+        <MyButton primary={true} type='submit' onClick={handleDeny}>
+          Додати
+        </MyButton>
+        <MyButton textColor='black' onClick={handleConfirm}>
+          Скасувати
+        </MyButton>
       </div>
     </div>
   );

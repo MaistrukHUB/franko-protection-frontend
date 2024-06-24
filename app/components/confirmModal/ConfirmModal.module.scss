@@ -8,7 +8,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 20px;
-  background-color: green;
+  background-color: var(--grayNav-primary);
   width: 500px;
   height: 260px;
   display: flex;
@@ -41,13 +41,16 @@
 }
 
 .buttons {
-  width: 400px;
+  width: 350px;
   display: flex;
   justify-content: space-between;
 
   button {
     margin-right: 30px;
-    border: solid 2px gold;
+    @media (max-width: 635px) {
+     margin-right: 0;
+     align-items: center;
+    }
   }
 
   .deny {
@@ -55,7 +58,6 @@
   }
 
   .confirm {
-    background: gold;
   }
 
   :last-child {
@@ -64,8 +66,8 @@
 
   @media (max-width: 635px) {
     height: 100px;
-    width: 200px;
     flex-direction: column;
+    align-items: center;
   }
 }
 

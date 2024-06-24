@@ -18,9 +18,13 @@ const MyInput: React.FC<InputProps> = ({
   label,
   name,
 }) => {
+  const id = name
+    ? name
+    : `input-${label.replace(/\s+/g, "-").toLowerCase()}`;
   return (
     <div className={`${styles.form__group} ${styles.field}`}>
       <input
+        id={id}
         name={name ? name : ""}
         autoComplete='new-password'
         type={type}
@@ -30,7 +34,9 @@ const MyInput: React.FC<InputProps> = ({
         onChange={onChange}
         required
       />
-      <label className={styles.form__label}>{label}</label>
+      <label htmlFor={id} className={styles.form__label}>
+        {label}
+      </label>
     </div>
   );
 };

@@ -31,11 +31,12 @@ const Header = () => {
   return (
     <div className={styles.root}>
       <div className={styles.top}>
-        <Link href={"/admin"} className={styles.headerLogo}>
+        <Link href={"/"} className={styles.headerLogo}>
           <img
             src='https://i.postimg.cc/4y0JwnYb/FP.png'
             alt='Logo'
           />
+          Hard enduro
         </Link>
         <div className={styles.navHeader1}>
           <NavHeader />
